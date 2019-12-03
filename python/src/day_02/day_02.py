@@ -27,7 +27,7 @@ def find_noun_and_verb(instructions: list, expected_value: int) -> int:
 
 
 instructions = []
-with open('src/day_02/day_02.txt', 'r') as file:
+with open('python/src/day_02/day_02.txt', 'r') as file:
     instructions = list(map(int, file.read().split(',')))
 part_one = set_noun_and_verb(instructions[:], 12, 2)
 part_one = execute_instructions(part_one)[0]
