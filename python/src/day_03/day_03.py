@@ -31,10 +31,14 @@ def get_intersections(line1: list, line2: list):
     return list(set(line1).intersection(line2))
 
 
-def get_distances(intersections: list):
+def get_closest_distance(intersections: list):
     distances = [abs(value[0]) + abs(value[1]) for value in intersections]
     distances.sort()
     return distances[0]
+
+
+def get_fewest_combined_steps(cordinates1: list, cordinates2: list, intersections: list):
+    return sorted([(cordinates1.index(intersection) + cordinates2.index(intersection)) + 2 for intersection in intersections ])[0]
 
 
 with open('python/src/day_03/day_03.txt') as file:
@@ -43,5 +47,7 @@ line1, line2 = [line.split(',') for line in lines]
 cordinates1 = execute_cordinates(line1)
 cordinates2 = execute_cordinates(line2)
 intersections = get_intersections(cordinates1, cordinates2)
-distance = get_distances(intersections)
-print(f'Part one: {distance}')
+closest_distance = get_closest_distance(intersections)
+fewest_combined_steps = get_fewest_combined_steps(cordinates1, cordinates2, intersections)
+print(f'Part one: {closest_distance}')
+print(f'Part two: {fewest_combined_steps}')
