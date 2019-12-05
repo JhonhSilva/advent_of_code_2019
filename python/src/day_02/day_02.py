@@ -11,15 +11,15 @@ def operation(instructions: list, operation: int, instruction1: int, instruction
     return instructions
 
 
-def set_noun_and_verb(instructions: list, noun: int, verb: int):
+def set_noun_and_verb(instructions: list, noun: int, verb: int) -> list:
     instructions[1] = noun
     instructions[2] = verb
     return instructions
 
 
 def find_noun_and_verb(instructions: list, expected_value: int) -> int:
-    for noun in range(0, 100):
-        for verb in range(0, 100):
+    for noun in range(100):
+        for verb in range(100):
             test = set_noun_and_verb(instructions[:], noun, verb)
             if execute_instructions(test)[0] == expected_value:
                 return (100 * noun) + verb

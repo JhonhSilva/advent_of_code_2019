@@ -1,4 +1,4 @@
-def get_positions(position: tuple, direction: str, distance: int):
+def get_positions(position: tuple, direction: str, distance: int) -> list:
     positions = []
     for i in range(1, distance + 1):
         x = position[0]
@@ -15,11 +15,11 @@ def get_positions(position: tuple, direction: str, distance: int):
     return positions
 
 
-def get_cordinate(cordinate: str):
+def get_cordinate(cordinate: str) -> tuple:
     return (cordinate[0].upper(), int(cordinate[1:]))
 
 
-def execute_cordinates(cordinates: list):
+def execute_cordinates(cordinates: list) -> list:
     positions = [(0, 0)]
     for cordinate in cordinates:
         direction, distance = get_cordinate(cordinate)
@@ -27,17 +27,17 @@ def execute_cordinates(cordinates: list):
     return positions[1:]
 
 
-def get_intersections(line1: list, line2: list):
+def get_intersections(line1: list, line2: list) -> list:
     return list(set(line1).intersection(line2))
 
 
-def get_closest_distance(intersections: list):
+def get_closest_distance(intersections: list) -> int:
     distances = [abs(value[0]) + abs(value[1]) for value in intersections]
     distances.sort()
     return distances[0]
 
 
-def get_fewest_combined_steps(cordinates1: list, cordinates2: list, intersections: list):
+def get_fewest_combined_steps(cordinates1: list, cordinates2: list, intersections: list) -> int:
     return sorted([(cordinates1.index(intersection) + cordinates2.index(intersection)) + 2 for intersection in intersections ])[0]
 
 
