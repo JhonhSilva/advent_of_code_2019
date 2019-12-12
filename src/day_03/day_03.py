@@ -1,8 +1,7 @@
 def get_positions(position: tuple, direction: str, distance: int) -> list:
     positions = []
     for i in range(1, distance + 1):
-        x = position[0]
-        y = position[1]
+        x, y = position[0], position[1]
         if direction == 'U':
             y += i
         elif direction == 'R':
@@ -41,7 +40,7 @@ def get_fewest_combined_steps(cordinates1: list, cordinates2: list, intersection
     return sorted([(cordinates1.index(intersection) + cordinates2.index(intersection)) + 2 for intersection in intersections ])[0]
 
 
-with open('python/src/day_03/day_03.txt') as file:
+with open('src/day_03/day_03.txt') as file:
     lines = file.read().splitlines()
 line1, line2 = [line.split(',') for line in lines]
 cordinates1 = execute_cordinates(line1)
