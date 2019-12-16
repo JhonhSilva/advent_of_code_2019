@@ -90,4 +90,4 @@ def operation(parameters: list, operation: int, parameter1: int, parameter2: int
 parameters = []
 with open('src/day_05/day_05.txt', 'r') as file:
     parameters = list(map(int, file.read().split(',')))
-part_one = execute_instructions(parameters)
+execute_instructions(parameters)
