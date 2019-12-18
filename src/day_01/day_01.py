@@ -1,5 +1,4 @@
 from math import floor
-import pandas as pd
 
 
 def get_fuel(mass: float) -> int:
@@ -11,8 +10,10 @@ def get_fuel_fuel(fuel: float, total_fuel: float = 0) -> int:
     return get_fuel_fuel(new_fuel, total_fuel + new_fuel) if new_fuel > 0 else total_fuel
 
 
-modules = pd.read_csv('src/day_01/day_01.csv', names=['module'])
-fuel = modules.module.apply(get_fuel).sum()
-total_fuel = modules.module.apply(get_fuel).apply(lambda f: f + get_fuel_fuel(f)).sum()
+with open('src/day_01/day_01.csv', 'r') as file:
+    modules = list(map(int, file.read().splitlines()))
+
+fuel = sum(map(get_fuel, modules))
+total_fuel = sum(map(lambda f: f + get_fuel_fuel(f), map(get_fuel, modules)))
 print(f'Part one: {fuel}')
 print(f'Part two: {total_fuel}')

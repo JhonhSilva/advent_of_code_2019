@@ -8,7 +8,6 @@ pylint = "*"
 rope = "*"
 
 [packages]
-pandas = "*"
 
 [requires]
 python_version = "3.7"
