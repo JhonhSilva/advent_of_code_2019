@@ -77,7 +77,7 @@ def get_orbits(all_planets: dict, lines: list) -> dict:
 
 
 if __name__ == '__main__':
-    with open('src/day_06/day_06.txt') as file:
+    with open('src/day_06/day_06.txt', 'r') as file:
         lines = file.read().splitlines()
         
     all_planets = get_all_planets(lines)

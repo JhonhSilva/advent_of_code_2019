@@ -39,7 +39,7 @@ def get_fewest_combined_steps(cordinates1: list, cordinates2: list, intersection
 
 
 if __name__ == '__main__':
-    with open('src/day_03/day_03.txt') as file:
+    with open('src/day_03/day_03.txt', 'r') as file:
         lines = file.read().splitlines()
         
     line1, line2 = [line.split(',') for line in lines]
