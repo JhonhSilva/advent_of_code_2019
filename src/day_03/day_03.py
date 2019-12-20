@@ -31,9 +31,7 @@ def get_intersections(line1: list, line2: list) -> list:
 
 
 def get_closest_distance(intersections: list) -> int:
-    distances = [abs(value[0]) + abs(value[1]) for value in intersections]
-    distances.sort()
-    return distances[0]
+    return sorted(list(map(lambda value: abs(value[0]) + abs(value[1]), intersections)))[0]
 
 
 def get_fewest_combined_steps(cordinates1: list, cordinates2: list, intersections: list) -> int:
