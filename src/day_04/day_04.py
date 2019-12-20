@@ -26,8 +26,9 @@ def right_passwords_count(passwords: list, adjacent_digits_function) -> int:
     return len(right_passwords)
 
 
-passwords = range(240298, 784957)
-part_one = right_passwords_count(passwords, has_equal_adjacent_digits)
-part_two = right_passwords_count(passwords, has_equal_adjacent_two_digits)
-print(f'Part one: {part_one}')
-print(f'Part two: {part_two}')
+if __name__ == '__main__':
+    passwords = range(240298, 784957)
+    part_one = right_passwords_count(passwords, has_equal_adjacent_digits)
+    part_two = right_passwords_count(passwords, has_equal_adjacent_two_digits)
+    print(f'Part one: {part_one}')
+    print(f'Part two: {part_two}')

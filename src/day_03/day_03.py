@@ -38,13 +38,15 @@ def get_fewest_combined_steps(cordinates1: list, cordinates2: list, intersection
     return sorted([(cordinates1.index(intersection) + cordinates2.index(intersection)) + 2 for intersection in intersections ])[0]
 
 
-with open('src/day_03/day_03.txt') as file:
-    lines = file.read().splitlines()
-line1, line2 = [line.split(',') for line in lines]
-cordinates1 = execute_cordinates(line1)
-cordinates2 = execute_cordinates(line2)
-intersections = get_intersections(cordinates1, cordinates2)
-closest_distance = get_closest_distance(intersections)
-fewest_combined_steps = get_fewest_combined_steps(cordinates1, cordinates2, intersections)
-print(f'Part one: {closest_distance}')
-print(f'Part two: {fewest_combined_steps}')
+if __name__ == '__main__':
+    with open('src/day_03/day_03.txt') as file:
+        lines = file.read().splitlines()
+        
+    line1, line2 = [line.split(',') for line in lines]
+    cordinates1 = execute_cordinates(line1)
+    cordinates2 = execute_cordinates(line2)
+    intersections = get_intersections(cordinates1, cordinates2)
+    closest_distance = get_closest_distance(intersections)
+    fewest_combined_steps = get_fewest_combined_steps(cordinates1, cordinates2, intersections)
+    print(f'Part one: {closest_distance}')
+    print(f'Part two: {fewest_combined_steps}')

@@ -25,11 +25,12 @@ def find_noun_and_verb(instructions: list, expected_value: int) -> int:
     return None
 
 
-instructions = []
-with open('src/day_02/day_02.txt', 'r') as file:
-    instructions = list(map(int, file.read().split(',')))
-part_one = set_noun_and_verb(instructions[:], 12, 2)
-part_one = execute_instructions(part_one)[0]
-part_two = find_noun_and_verb(instructions[:], 19690720)
-print(f'Part one: {part_one}')
-print(f'Part two: {part_two}')
+if __name__ == '__main__':
+    with open('src/day_02/day_02.txt', 'r') as file:
+        instructions = list(map(int, file.read().split(',')))
+        
+    part_one = set_noun_and_verb(instructions[:], 12, 2)
+    part_one = execute_instructions(part_one)[0]
+    part_two = find_noun_and_verb(instructions[:], 19690720)
+    print(f'Part one: {part_one}')
+    print(f'Part two: {part_two}')

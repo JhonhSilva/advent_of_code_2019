@@ -87,7 +87,8 @@ def operation(parameters: list, operation: int, parameter1: int, parameter2: int
     return parameters, position
 
 
-parameters = []
-with open('src/day_05/day_05.txt', 'r') as file:
-    parameters = list(map(int, file.read().split(',')))
-execute_instructions(parameters)
+if __name__ == '__main__':
+    with open('src/day_05/day_05.txt', 'r') as file:
+        parameters = list(map(int, file.read().split(',')))
+        
+    execute_instructions(parameters)

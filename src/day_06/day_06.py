@@ -76,11 +76,13 @@ def get_orbits(all_planets: dict, lines: list) -> dict:
     return all_planets['COM']
 
 
-with open('src/day_06/day_06.txt') as file:
-    lines = file.read().splitlines()
-all_planets = get_all_planets(lines)
-orbits = get_orbits(all_planets, lines)
-total_orbits = orbits.get_total_orbit()
-minimum_orbital_transfers = orbits.get_minimum_orbital_transfers('YOU', 'SAN')
-print(f'Part one: {total_orbits}')
-print(f'Part two: {minimum_orbital_transfers}')
+if __name__ == '__main__':
+    with open('src/day_06/day_06.txt') as file:
+        lines = file.read().splitlines()
+        
+    all_planets = get_all_planets(lines)
+    orbits = get_orbits(all_planets, lines)
+    total_orbits = orbits.get_total_orbit()
+    minimum_orbital_transfers = orbits.get_minimum_orbital_transfers('YOU', 'SAN')
+    print(f'Part one: {total_orbits}')
+    print(f'Part two: {minimum_orbital_transfers}')
