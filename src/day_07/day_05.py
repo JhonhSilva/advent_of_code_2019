@@ -35,35 +35,38 @@ def get_value_by_parameter_mode(instructions: list, mode: int, parameter_value):
 #             i += 1
 
 # part two
-def execute_instructions(parameters: list, inputs: list = None) -> int:
+def execute_instructions(parameters: list, inputs: list = None) -> tuple:
     i = 0
     last_value = None
-    while True:
-        parameter = parameters[i]
-        _, parameter2_mode, parameter1_mode, opcode = get_parameters_modes_and_opcode(parameter)
-        if opcode in [1, 2, 7, 8]:
-            parameter1 = get_value_by_parameter_mode(parameters, parameter1_mode, parameters[i + 1])
-            parameter2 = get_value_by_parameter_mode(parameters, parameter2_mode, parameters[i + 2])
-            parameter3 = parameters[i + 3]
-            parameters, _ = operation(parameters, opcode, parameter1, parameter2, parameter3)
-            i += 4
-        elif opcode == 3:
-            parameters, _ = operation(parameters, opcode, parameters[i + 1], inputs=inputs)
-            i += 2
-        elif opcode == 4:
-            parameter1 = get_value_by_parameter_mode(parameters, parameter1_mode, parameters[i + 1])
-            parameters, _ = operation(parameters, opcode, parameter1, inputs=inputs)
-            last_value = parameter1
-            i += 2
-        elif opcode in [5, 6]:
-            parameter1 = get_value_by_parameter_mode(parameters, parameter1_mode, parameters[i + 1])
-            parameter2 = get_value_by_parameter_mode(parameters, parameter2_mode, parameters[i + 2])
-            parameters, position = operation(parameters, opcode, parameter1, parameter2)
-            i = i + 3 if position == 0 else position
-        elif opcode == 99:
-            return last_value
-        else:
-            i += 1
+    try:
+        while True:
+            parameter = parameters[i]
+            _, parameter2_mode, parameter1_mode, opcode = get_parameters_modes_and_opcode(parameter)
+            if opcode in [1, 2, 7, 8]:
+                parameter1 = get_value_by_parameter_mode(parameters, parameter1_mode, parameters[i + 1])
+                parameter2 = get_value_by_parameter_mode(parameters, parameter2_mode, parameters[i + 2])
+                parameter3 = parameters[i + 3]
+                parameters, _ = operation(parameters, opcode, parameter1, parameter2, parameter3)
+                i += 4
+            elif opcode == 3:
+                parameters, _ = operation(parameters, opcode, parameters[i + 1], inputs=inputs)
+                i += 2
+            elif opcode == 4:
+                parameter1 = get_value_by_parameter_mode(parameters, parameter1_mode, parameters[i + 1])
+                parameters, _ = operation(parameters, opcode, parameter1, inputs=inputs)
+                last_value = parameter1
+                i += 2
+            elif opcode in [5, 6]:
+                parameter1 = get_value_by_parameter_mode(parameters, parameter1_mode, parameters[i + 1])
+                parameter2 = get_value_by_parameter_mode(parameters, parameter2_mode, parameters[i + 2])
+                parameters, position = operation(parameters, opcode, parameter1, parameter2)
+                i = i + 3 if position == 0 else position
+            elif opcode == 99:
+                return last_value, True
+            else:
+                i += 1
+    except:
+        return last_value, False
 
 
 def operation(parameters: list, operation: int, parameter1: int, parameter2: int = 0, parameter3: int = 0, inputs: list = None) -> tuple:
