@@ -1,4 +1,4 @@
-from day_05 import execute_instructions
+from intcode import execute_instructions
 
 
 def get_output_signal(parameters: list, phase_setting: list):
